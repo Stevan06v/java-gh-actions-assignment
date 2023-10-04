@@ -1,0 +1,12 @@
+name: Build Entlehnlist
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀 # {{github.actor }} -> .env variablen
+on: [push] # wann soll der job gestartet werden
+jobs: # jobs sind verschiedene maschinen -backend, -frontend 
+  build:
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin' # See 'Supported distributions' for available options
+        java-version: '17'
+    - run: java HelloWorldApp.java
