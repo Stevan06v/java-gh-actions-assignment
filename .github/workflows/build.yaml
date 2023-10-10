@@ -1,7 +1,9 @@
 name: Java HelloWorld action
 run-name: ${{ github.actor }} has tested helloWorld in java
 on: [push]
+
 jobs:
+
   hello-world:
     runs-on: ubuntu-latest
     steps:
@@ -13,3 +15,12 @@ jobs:
           check-latest: true
       - run: javac HelloWorld.java
       - run: java HelloWorld
+
+  docs: 
+    runs-on: ubuntu-22.04
+    steps:
+      - name: "Hello"
+        run: |
+          echo "Hello World \n" > demo.txt
+          pws 
+          ls -a
