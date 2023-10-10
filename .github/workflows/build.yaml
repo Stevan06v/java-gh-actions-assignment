@@ -23,10 +23,12 @@ jobs:
     steps:
       - name: "Hello"
         run: |
-          echo "Hello World \n" > demo.txt
+          mkdir -p dist
+          echo "Hello World \n" > dist/demo.txt
           pwd
           ls -a
-          
+
+  # führt zuerst andere jobs aus bevor er deployed
   deploy:
     needs:
       - hello-world
@@ -37,3 +39,11 @@ jobs:
       - name: "Hello"
         run: |
           echo "Jobs ran asynchronosly"
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dis
+          path: |
+            dist
+
