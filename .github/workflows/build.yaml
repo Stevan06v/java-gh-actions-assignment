@@ -5,6 +5,7 @@ on: [push]
 jobs:
 
   hello-world:
+    name: compile
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -17,10 +18,22 @@ jobs:
       - run: java HelloWorld
 
   docs: 
+    name: documentation
     runs-on: ubuntu-22.04
     steps:
       - name: "Hello"
         run: |
           echo "Hello World \n" > demo.txt
-          pws 
+          pwd
           ls -a
+          
+  deploy:
+    needs:
+      - hello-world
+      - docs
+    runs-on: ubuntu-22.04
+    name: "deploy" 
+    steps:
+      - name: "Hello"
+        run: |
+          echo "Jobs ran asynchronosly"
