@@ -43,7 +43,17 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: dis
+          name: dist
           path: |
             dist
+
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: hello
+      - run: |
+          pwd
+          ls -l
+      - run: |
+          echo "Done"
 
